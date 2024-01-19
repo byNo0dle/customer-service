@@ -1,4 +1,5 @@
 package com.ufostyle.customerservice.entities;
 
-public class Nick {
+public enum TypeCustomer {
+    personal, business
 }
