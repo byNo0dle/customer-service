@@ -16,7 +16,10 @@ import reactor.core.publisher.Mono;
 @Service
 public class CustomerServiceImpl implements CustomerService{
 
+    @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
     RestTemplate restTemplate;
 
     @Value("${api.tableId-service.uri}")

@@ -3,6 +3,7 @@ package com.ufostyle.customerservice.controllers;
 import com.ufostyle.customerservice.entities.Customer;
 import com.ufostyle.customerservice.services.CustomerService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/customer")
 public class CustomerController {
 
+    @Autowired
     private CustomerService customerService;
 
     @GetMapping
