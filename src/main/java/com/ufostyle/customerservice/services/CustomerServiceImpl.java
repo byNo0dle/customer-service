@@ -22,23 +22,6 @@ public class CustomerServiceImpl implements CustomerService{
     @Autowired
     RestTemplate restTemplate;
 
-    @Value("${api.tableId-service.uri}")
-    String tableIdService;
-
-    @Override
-    public Long generateKey(String nameTable) {
-        //log.info(tableIdService + "/generateKey/" + nameTable);
-        ResponseEntity<Long> responseGet = restTemplate.exchange(tableIdService + "/generateKey/" + nameTable, HttpMethod.GET,
-                null, new ParameterizedTypeReference<Long>() {
-                });
-        if (responseGet.getStatusCode() == HttpStatus.OK) {
-            //log.info("Body:"+ responseGet.getBody());
-            return responseGet.getBody();
-        } else {
-            return Long.valueOf(0);
-        }
-    }
-
     @Override
     public Flux<Customer> findAll() {
         return customerRepository.findAll();
@@ -46,11 +29,6 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Mono<Customer> save(Customer customer) {
-        Long key=generateKey(Customer.class.getSimpleName());
-        if(key>=1) {
-            customer.setId(key);
-            //log.info("SAVE[product]:"+customer.toString());
-        }
         return customerRepository.save(customer);
     }
 
@@ -60,12 +38,12 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Mono<Customer> findById(Long id) {
+    public Mono<Customer> findById(String id) {
         return customerRepository.findById(id);
     }
 
     @Override
-    public Mono<Void> delete(Long id) {
+    public Mono<Void> delete(String id) {
         return customerRepository.deleteById(id);
     }
 }

@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<Customer>> findById(@PathVariable("id") Long id){
+    public Mono<ResponseEntity<Customer>> findById(@PathVariable("id") String id){
         return customerService.findById(id).map(_customer -> ResponseEntity.ok().body(_customer))
                 .onErrorResume(e -> {
                     log.info("Error:" + e.getMessage());
@@ -57,7 +57,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<ResponseEntity<Void>> deleteCustomer(@PathVariable("id") Long id){
+    public Mono<ResponseEntity<Void>> deleteCustomer(@PathVariable("id") String id){
         return customerService.findById(id).flatMap(customer -> {
             return customerService.delete(customer.getId()).then(Mono.just(ResponseEntity.ok().build()));
         });
