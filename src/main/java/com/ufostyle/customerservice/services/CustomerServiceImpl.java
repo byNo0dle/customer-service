@@ -13,37 +13,40 @@ import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Esto es la clase CustomerServiceImpl.
+ */
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
-    CustomerRepository customerRepository;
+  @Autowired
+  CustomerRepository customerRepository;
 
-    @Autowired
-    RestTemplate restTemplate;
+  @Autowired
+  RestTemplate restTemplate;
 
-    @Override
-    public Flux<Customer> findAll() {
-        return customerRepository.findAll();
-    }
+  @Override
+  public Flux<Customer> findAll() {
+    return customerRepository.findAll();
+  }
 
-    @Override
-    public Mono<Customer> save(Customer customer) {
-        return customerRepository.save(customer);
-    }
+  @Override
+  public Mono<Customer> save(Customer customer) {
+    return customerRepository.save(customer);
+  }
 
-    @Override
-    public Mono<Customer> update(Customer customer) {
-        return customerRepository.save(customer);
-    }
+  @Override
+  public Mono<Customer> update(Customer customer) {
+    return customerRepository.save(customer);
+  }
 
-    @Override
-    public Mono<Customer> findById(String id) {
-        return customerRepository.findById(id);
-    }
+  @Override
+  public Mono<Customer> findById(String id) {
+    return customerRepository.findById(id);
+  }
 
-    @Override
-    public Mono<Void> delete(String id) {
-        return customerRepository.deleteById(id);
-    }
+  @Override
+  public Mono<Void> delete(String id) {
+    return customerRepository.deleteById(id);
+  }
 }
