@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Customer API
+  title: Client API
   version: 1.0.0
   description: API for managing bank clients. BootCamp Microservices 49.
   contact:
@@ -8,17 +8,17 @@ info:
     url: https://github.com/byNo0dle
 servers:
   - url: http://localhost:9003/api
-    description: Customer Service
+    description: Client Service
 paths:
-  /customer:
+  /client:
     get:
       tags:
-        - customer
-      summary: Find all customers
-      operationId: findAll
+        - Client
+      summary: Find all Clients
+      operationId: findAllClient
       responses:
         '200':
-          description: List of customers retrieved successfully
+          description: List of Clients retrieved successfully
           content:
             application/json:
               schema:
@@ -30,21 +30,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
         '404':
-          description: Not Found customer
+          description: Not Found Client
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
     post:
       tags:
-        - customer
-      summary: Add a new customer to the bank
-      description: Add a new customer to the bank
-      operationId: saveCustomer
+        - Client
+      summary: Add a new Client to the bank
+      description: Add a new Client to the bank
+      operationId: saveClient
       requestBody:
-        description: Create a new customer in the bank
+        description: Create a new Client in the bank
         content:
           application/json:
             schema:
@@ -62,21 +62,21 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
         '404':
-          description: Not Found customer
+          description: Not Found Client
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
     put:
       tags:
-        - customer
-      summary: Update an existing customer
-      description: Update an existing customer by Id
-      operationId: updateCustomer
+        - Client
+      summary: Update an existing Client
+      description: Update an existing Client by Id
+      operationId: updateClient
       requestBody:
-        description: Update an existent customer in the bank
+        description: Update an existent Client in the bank
         content:
           application/json:
             schema:
@@ -94,24 +94,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
         '404':
-          description: Not Found customer
+          description: Not Found Client
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
-  /customer/{id}:
+                $ref: '#/components/schemas/ClientError'
+  /client/{id}:
     get:
       tags:
-        - customer
-      summary: Find customer by ID
-      description: Returns a single customer
-      operationId: findById
+        - Client
+      summary: Find Client by ID
+      description: Returns a single Client
+      operationId: findByIdClient
       parameters:
         - name: id
           in: path
-          description: ID of customer to return
+          description: ID of Client to return
           required: true
           schema:
             type: string
@@ -127,39 +127,35 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
         '404':
-          description: Not Found customer
+          description: Not Found Client
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
     delete:
       tags:
-        - customer
-      summary: Deletes a customer
-      description: Delete a customer
-      operationId: deleteCustomer
+        - Client
+      summary: Deletes a Client
+      description: Delete a Client
+      operationId: deleteClient
       parameters:
         - name: id
           in: path
-          description: Customer id to delete
+          description: Client id to delete
           required: true
           schema:
             type: string
       responses:
-        '400':
-          description: Bad Request invalid syntax
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerError'
+        '204':
+          description: Not Content client
         '404':
-          description: Not Found customer
+          description: Not Found Client
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CustomerError'
+                $ref: '#/components/schemas/ClientError'
 
 components:
   schemas:
@@ -175,9 +171,6 @@ components:
         lastName:
           type: string
           example: Ahuanari Sangama
-        documentNumber:
-          type: string
-          example: 78765400
         emailAddress:
           type: string
           example: pieroahuanarisangama@gmail.com
@@ -187,19 +180,27 @@ components:
         homeAddress:
           type: string
           example: Av. New York 2300
-        typeDocument:
+        documentType:
+          $ref: '#/components/schemas/DocumentType'
+        clientType:
+          $ref: '#/components/schemas/ClientType'
+    DocumentType:
+      properties:
+        document:
           type: string
-          enum:
-            - DNI
-            - RUC
-            - PASSPORT
-            - IMMIGRATIONCARD
-        typeCustomer:
+          example: DNI
+        documentNumber:
           type: string
-          enum:
-            - PERSONAL
-            - BUSINESS
-    CustomerError:
+          example: 74123456
+    ClientType:
+      properties:
+        typeClient:
+          type: string
+          example: PERSONAL
+        status:
+          type: string
+          example: Active
+    ClientError:
       type: object
       properties:
         code:

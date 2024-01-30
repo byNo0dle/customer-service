@@ -1,8 +1,15 @@
 package com.ufostyle.customerservice.entities;
 
+import lombok.Builder;
+import lombok.Data;
+
 /**
- * Esto es el enum TypeDocument.
+ * Esto es la clase TypeDocument.
  */
-public enum TypeDocument {
-  DNI, RUC, PASSPORT, IMMIGRATIONCARD;
+@Builder
+@Data
+public class TypeDocument {
+
+  private String document;
+  private String documentNumber;
 }
