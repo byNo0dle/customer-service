@@ -1,7 +1,3 @@
-FROM openjdk:8-jre-jre-alpine
+FROM nginx:1.19-alpine
 
-#Create app directory
-RUN mkdir -p /opt/logs
-WORKDIR /opt
-
-ADD *.jar /opt/
+ADD index.html /usr/share/nginx/html
