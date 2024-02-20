@@ -1,5 +1,6 @@
 package com.ufostyle.customerservice.entities;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
@@ -11,7 +12,7 @@ import java.util.UUID;
 /**
  * Esto es la clase Customer.
  */
-
+@Builder
 @Data
 @Slf4j
 @Document(collection = "customers")

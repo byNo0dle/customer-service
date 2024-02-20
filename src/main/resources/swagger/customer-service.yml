@@ -195,7 +195,7 @@ components:
         typeCustomer:
           $ref: '#/components/schemas/TypeCustomer'
         identityDocumentType:
-          $ref: '#/components/schemas/identityDocumentType'
+          $ref: '#/components/schemas/IdentityDocumentType'
     Direction:
       properties:
         type:

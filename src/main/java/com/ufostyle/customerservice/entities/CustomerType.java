@@ -6,6 +6,7 @@ import lombok.Data;
 /**
  * Esto es la clase TypeDocument.
  */
+@Builder
 @Data
 public class CustomerType {
 

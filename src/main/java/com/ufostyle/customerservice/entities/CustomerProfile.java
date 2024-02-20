@@ -7,6 +7,7 @@ import lombok.Data;
 /**
  * Esto es la clase TypeClient.
  */
+@Builder
 @Data
 public class CustomerProfile {
 

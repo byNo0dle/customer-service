@@ -1,13 +1,7 @@
 package com.ufostyle.customerservice.services;
 
-import com.ufostyle.customerservice.mappers.ClientMapper;
-import com.ufostyle.customerservice.noodle.Customer;
-import com.ufostyle.customerservice.repositories.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+//import com.ufostyle.customerservice.noodle.Customer;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 /**
  * Esto es la interfaz CustomerService.
@@ -15,7 +9,7 @@ import reactor.core.publisher.Mono;
 @Service
 public class ClientService {
 
-  @Autowired
+  /*@Autowired
   CustomerRepository customerRepository;
 
   @Autowired
@@ -44,5 +38,5 @@ public class ClientService {
 
   public Mono<Void> deleteById(String id) {
     return customerRepository.deleteById(id);
-  }
+  }*/
 }
