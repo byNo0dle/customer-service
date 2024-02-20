@@ -1,6 +1,6 @@
 package com.ufostyle.customerservice.mappers;
 
-import com.ufostyle.customerservice.entities.TypeDocument;
+import com.ufostyle.customerservice.entities.CustomerType;
 import com.ufostyle.customerservice.noodle.DocumentType;
 
 /**
@@ -14,8 +14,8 @@ public class TypeDocumentMapper {
    * @param documentType esto es un parametro
    * @return esto retorna TypeDocument
    */
-  public static TypeDocument tdDocument(DocumentType documentType) {
-    return TypeDocument.builder()
+  public static CustomerType tdDocument(DocumentType documentType) {
+    return CustomerType.builder()
         .document(documentType.getDocument())
         .documentNumber(documentType.getDocumentNumber())
         .build();
@@ -27,7 +27,7 @@ public class TypeDocumentMapper {
    * @param tdDocument esto es un parametro
    * @return esto retorna documentType
    */
-  public static DocumentType documentType(TypeDocument tdDocument) {
+  public static DocumentType documentType(CustomerType tdDocument) {
     DocumentType documentType = new DocumentType();
     documentType.setDocument(tdDocument.getDocument());
     documentType.documentNumber(tdDocument.getDocumentNumber());

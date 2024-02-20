@@ -24,7 +24,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Customer'
+                  $ref: '#/components/schemas/Client'
         '400':
           description: Bad Request invalid syntax
           content:
@@ -48,15 +48,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer'
+              $ref: '#/components/schemas/Client'
         required: true
       responses:
-        '200':
+        '201':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Client'
         '400':
           description: Bad Request invalid syntax
           content:
@@ -80,7 +80,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer'
+              $ref: '#/components/schemas/Client'
         required: true
       responses:
         '200':
@@ -88,7 +88,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Client'
         '400':
           description: Bad Request invalid syntax
           content:
@@ -121,7 +121,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Client'
         '400':
           description: Bad Request invalid syntax
           content:
@@ -159,7 +159,7 @@ paths:
 
 components:
   schemas:
-    Customer:
+    Client:
       type: object
       properties:
         id:
@@ -177,29 +177,84 @@ components:
         phoneNumber:
           type: string
           example: 981675432
-        homeAddress:
+        gender:
           type: string
-          example: Av. New York 2300
-        documentType:
-          $ref: '#/components/schemas/DocumentType'
-        clientType:
-          $ref: '#/components/schemas/ClientType'
-    DocumentType:
+          example: Masculino
+        numberDocumentIdentity:
+          type: string
+          example: 70384520
+        isActive:
+          type: boolean
+          example:
+            - true
+            - false
+        direction:
+          $ref: '#/components/schemas/Direction'
+        profileCustomer:
+          $ref: '#/components/schemas/ProfileCustomer'
+        typeCustomer:
+          $ref: '#/components/schemas/TypeCustomer'
+        identityDocumentType:
+          $ref: '#/components/schemas/identityDocumentType'
+    Direction:
       properties:
-        document:
+        type:
           type: string
-          example: DNI
-        documentNumber:
+          example: Av.
+        name:
           type: string
-          example: 74123456
-    ClientType:
+          example: Pachitea
+        number:
+          type: string
+          example: # 333
+        province:
+          type: string
+          example: Pucallpa
+        district:
+          type: string
+          example: Calleria
+        department:
+          type: string
+          example: Ucayali
+    ProfileCustomer:
       properties:
-        typeClient:
+        code:
           type: string
-          example: PERSONAL
+          example: 1
+        description:
+          type: string
+          example: Vip
         status:
+          type: boolean
+          example:
+            - true
+            - false
+    TypeCustomer:
+      properties:
+        code:
           type: string
-          example: Active
+          example: 1
+        description:
+          type: string
+          example: Personal
+        isActive:
+          type: boolean
+          example:
+            - true
+            - false
+    IdentityDocumentType:
+      properties:
+        code:
+          type: string
+          example: 1
+        description:
+          type: string
+          example: Personal
+        isActive:
+          type: boolean
+          example:
+            - true
+            - false
     ClientError:
       type: object
       properties:

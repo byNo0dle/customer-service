@@ -1,6 +1,6 @@
 package com.ufostyle.customerservice.mappers;
 
-import com.ufostyle.customerservice.entities.Client;
+import com.ufostyle.customerservice.entities.Customer;
 import com.ufostyle.customerservice.noodle.Customer;
 
 /**
@@ -14,8 +14,8 @@ public class ClientMapper {
    * @param customer esto es un parametro
    * @return esto retorna el Customer
    */
-  public static Client clientEntity(Customer customer) {
-    return Client.builder()
+  public static Customer clientEntity(Customer customer) {
+    return Customer.builder()
         .id(customer.getId())
         .firstName(customer.getFirstName())
         .lastName(customer.getLastName())
@@ -33,7 +33,7 @@ public class ClientMapper {
    * @param client esto es un parametro
    * @return retorna el Client
    */
-  public static Customer customer(Client client) {
+  public static Customer customer(Customer client) {
     Customer customer = new Customer();
     customer.setId(client.getId());
     customer.setFirstName(client.getFirstName());

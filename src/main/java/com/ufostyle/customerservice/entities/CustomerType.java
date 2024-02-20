@@ -6,10 +6,10 @@ import lombok.Data;
 /**
  * Esto es la clase TypeDocument.
  */
-@Builder
 @Data
-public class TypeDocument {
+public class CustomerType {
 
-  private String document;
-  private String documentNumber;
+  private String code;
+  private String description;
+  private boolean isActive;
 }

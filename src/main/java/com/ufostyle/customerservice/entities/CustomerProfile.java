@@ -7,10 +7,10 @@ import lombok.Data;
 /**
  * Esto es la clase TypeClient.
  */
-@Builder
 @Data
-public class TypeClient {
+public class CustomerProfile {
 
-  private String typeClient;
-  private String status;
+  private String code;
+  private String description;
+  private boolean status;
 }

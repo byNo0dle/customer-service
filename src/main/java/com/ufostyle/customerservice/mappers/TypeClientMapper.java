@@ -1,6 +1,6 @@
 package com.ufostyle.customerservice.mappers;
 
-import com.ufostyle.customerservice.entities.TypeClient;
+import com.ufostyle.customerservice.entities.CustomerProfile;
 import com.ufostyle.customerservice.noodle.ClientType;
 
 /**
@@ -13,8 +13,8 @@ public class TypeClientMapper {
    * @param clientType esto es un parametro
    * @return retorna TypeClient
    */
-  public static TypeClient tcClient(ClientType clientType) {
-    return TypeClient.builder()
+  public static CustomerProfile tcClient(ClientType clientType) {
+    return CustomerProfile.builder()
         .typeClient(clientType.getTypeClient())
         .status(clientType.getStatus())
         .build();
@@ -26,7 +26,7 @@ public class TypeClientMapper {
    * @param tcClient esto es un parametro
    * @return retorna clientType
    */
-  public static ClientType clientType(TypeClient tcClient) {
+  public static ClientType clientType(CustomerProfile tcClient) {
     ClientType clientType = new ClientType();
     clientType.setTypeClient(tcClient.getTypeClient());
     clientType.setStatus(tcClient.getStatus());
