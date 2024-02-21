@@ -156,6 +156,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientError'
+  /client/numberDocumentIdentity/{numberDocumentIdentity}:
+    get:
+      tags:
+        - Client
+      summary: Search Client by numberDocumentIdentity
+      description: Search Client by numberDocumentIdentity
+      operationId: findByNumberDocumentIdentityClient
+      parameters:
+        - name: numberDocumentIdentity
+          in: path
+          description: This looks for a Client by numberDocumentIdentity
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Bad Request invalid syntax
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
+        '404':
+          description: Not Found Client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientError'
 
 components:
   schemas:
@@ -183,6 +216,9 @@ components:
         numberDocumentIdentity:
           type: string
           example: 70384520
+        status:
+          type: string
+          example: ACTIVO
         isActive:
           type: boolean
           example:

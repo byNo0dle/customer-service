@@ -1,5 +1,6 @@
 package com.ufostyle.customerservice.services;
 
+import com.ufostyle.customerservice.entities.Customer;
 import com.ufostyle.customerservice.mappers.CustomerMapper;
 import com.ufostyle.customerservice.noodle.Client;
 import com.ufostyle.customerservice.repositories.CustomerRepository;
@@ -13,6 +14,9 @@ import reactor.core.publisher.Mono;
  */
 @Service
 public class CustomerService {
+
+  private static final String ESTADO_ACTIVO_CUSTOMER = "ACTIVO";
+  private static final String ESTADO_INACTIVO_CUSTOMER = "INACTIVO";
 
   @Autowired
   CustomerRepository customerRepository;
@@ -39,5 +43,11 @@ public class CustomerService {
 
   public Mono<Void> deleteById(String id) {
     return customerRepository.deleteById(id);
+  }
+
+  public Mono<Client> findByNumberDocumentIdentity(String numberDocumentIdentity) {
+    return  customerRepository.findByNumberDocumentIdentity(numberDocumentIdentity)
+        .switchIfEmpty(Mono.empty())
+        .filter(numDocId -> numDocId.getStatus().equalsIgnoreCase("ACTIVO"));
   }
 }

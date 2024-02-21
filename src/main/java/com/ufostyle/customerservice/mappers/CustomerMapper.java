@@ -17,6 +17,7 @@ public class CustomerMapper {
         .phoneNumber(client.getPhoneNumber())
         .gender(client.getGender())
         .numberDocumentIdentity(client.getNumberDocumentIdentity())
+        .status(client.getStatus())
         .isActive(client.getIsActive())
         .address(AddressMapper.address(client.getDirection()))
         .customerProfile(CustomerProfileMapper.customerProfile(client.getProfileCustomer()))
@@ -34,6 +35,7 @@ public class CustomerMapper {
     client.setPhoneNumber(customer.getPhoneNumber());
     client.setGender(customer.getGender());
     client.setNumberDocumentIdentity(customer.getNumberDocumentIdentity());
+    client.setStatus(customer.getStatus());
     client.setIsActive(customer.isActive());
     client.setDirection(AddressMapper.direction(customer.getAddress()));
     client.setProfileCustomer(CustomerProfileMapper.profileCustomer(customer.getCustomerProfile()));

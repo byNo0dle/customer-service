@@ -51,4 +51,11 @@ public class ApiDelegateClient implements ClientApiDelegate {
         .then(Mono.just(ResponseEntity.noContent().<Void>build()))
         .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
   }
+
+  @Override
+  public Mono<ResponseEntity<Client>> findByNumberDocumentIdentityClient(String numberDocumentIdentity, ServerWebExchange exchange) {
+    return customerService.findByNumberDocumentIdentity(numberDocumentIdentity)
+        .flatMap(numDocId -> Mono.just(ResponseEntity.ok().body(numDocId)))
+        .switchIfEmpty(Mono.just(ResponseEntity.badRequest().build()));
+  }
 }

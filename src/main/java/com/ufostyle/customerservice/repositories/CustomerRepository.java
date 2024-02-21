@@ -1,6 +1,7 @@
 package com.ufostyle.customerservice.repositories;
 
 import com.ufostyle.customerservice.entities.Customer;
+import com.ufostyle.customerservice.noodle.Client;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
@@ -11,5 +12,5 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface CustomerRepository extends ReactiveMongoRepository<Customer, String> {
 
-  Mono<Customer> findByNumberDocumentIdentity(String numberDocumentIdentity);
+  Mono<Client> findByNumberDocumentIdentity(String numberDocumentIdentity);
 }

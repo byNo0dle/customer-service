@@ -26,6 +26,7 @@ public class Customer {
   private String phoneNumber;
   private String gender;
   private String numberDocumentIdentity;
+  private String status;
   private boolean isActive;
   private Address address;
   private CustomerProfile customerProfile;
