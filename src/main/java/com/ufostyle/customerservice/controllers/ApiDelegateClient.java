@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -32,20 +33,19 @@ public class ApiDelegateClient implements ClientApiDelegate {
         .flatMap(updateClient -> Mono.just(ResponseEntity.ok(updateClient)));
   }
 
+  @Override
+  public Mono<ResponseEntity<Flux<Client>>> findAllClient(ServerWebExchange exchange) {
+    return Mono.just(ResponseEntity.ok(customerService.findAll()));
+  }
+
+  @Override
+  public Mono<ResponseEntity<Client>> findByIdClient(String id, ServerWebExchange exchange) {
+    return customerService.findById(id)
+        .flatMap(findAllClient -> Mono.just(ResponseEntity.ok(findAllClient)))
+        .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
+  }
+
   /*
-  @Override
-  public Mono<ResponseEntity<Customer>> updateClient(
-      Mono<Customer> customer, ServerWebExchange exchange) {
-    return customer
-        .flatMap(requestCustomer2 -> clientService.update(requestCustomer2))
-        .flatMap(updateCustomer -> Mono.just(ResponseEntity.ok(updateCustomer)));
-  }
-
-  @Override
-  public Mono<ResponseEntity<Flux<Customer>>> findAllClient(ServerWebExchange exchange) {
-    return Mono.just(ResponseEntity.ok(clientService.findAll()));
-  }
-
   @Override
   public Mono<ResponseEntity<Customer>> findByIdClient(String id, ServerWebExchange exchange) {
     return clientService.findById(id)

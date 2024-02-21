@@ -5,6 +5,7 @@ import com.ufostyle.customerservice.noodle.Client;
 import com.ufostyle.customerservice.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -26,17 +27,17 @@ public class CustomerService {
         .flatMap(customer2 -> Mono.just(CustomerMapper.client(customer2)));
   }
 
-  /*public Mono<Customer> update(Customer customer) {
-    return customerRepository.save(ClientMapper.clientEntity(customer))
-        .flatMap(client2 -> Mono.just(ClientMapper.customer(client2)));
-  }
-
-
-  public Flux<Customer> findAll() {
+  public Flux<Client> findAll() {
     return customerRepository.findAll()
-        .flatMap(client3 -> Mono.just(ClientMapper.customer(client3)));
+        .flatMap(customer3 -> Mono.just(CustomerMapper.client(customer3)));
   }
 
+  public Mono<Client> findById(String id) {
+    return customerRepository.findById(id)
+        .flatMap(customer4 -> Mono.just(CustomerMapper.client(customer4)));
+  }
+
+  /*
   public Mono<Customer> findById(String id) {
     return customerRepository.findById(id)
         .flatMap(client4 -> Mono.just(ClientMapper.customer(client4)));
