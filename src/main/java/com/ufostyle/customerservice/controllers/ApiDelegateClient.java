@@ -1,25 +1,31 @@
 package com.ufostyle.customerservice.controllers;
 
-//import com.ufostyle.customerservice.noodle.Customer;
-import com.ufostyle.customerservice.services.ClientService;
-//import com.ufostyle.customerservice.ufo.ClientApiDelegate;
+import com.ufostyle.customerservice.noodle.Client;
+import com.ufostyle.customerservice.services.CustomerService;
+import com.ufostyle.customerservice.ufo.ClientApiDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
  * Esto es el ApiDelegate esto reemplaza al Controller clasico.
  */
 @Component
-public class ApiDelegateClient {
+public class ApiDelegateClient implements ClientApiDelegate {
 
-  /*@Autowired
-  private ClientService clientService;
+  @Autowired
+  private CustomerService customerService;
 
   @Override
+  public Mono<ResponseEntity<Client>> saveClient(Mono<Client> client, ServerWebExchange exchange) {
+    return client
+        .flatMap(requestClient1 -> customerService.save(requestClient1))
+        .flatMap(createClient -> Mono.just(ResponseEntity.ok(createClient)));
+  }
+
+  /*@Override
   public Mono<ResponseEntity<Customer>> saveClient(
       Mono<Customer> customer, ServerWebExchange exchange) {
     return customer

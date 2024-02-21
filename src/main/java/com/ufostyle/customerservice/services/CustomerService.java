@@ -1,26 +1,27 @@
 package com.ufostyle.customerservice.services;
 
-//import com.ufostyle.customerservice.noodle.Customer;
+import com.ufostyle.customerservice.mappers.CustomerMapper;
+import com.ufostyle.customerservice.noodle.Client;
+import com.ufostyle.customerservice.repositories.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 /**
  * Esto es la interfaz CustomerService.
  */
 @Service
-public class ClientService {
-
-  /*@Autowired
-  CustomerRepository customerRepository;
+public class CustomerService {
 
   @Autowired
-  RestTemplate restTemplate;
+  CustomerRepository customerRepository;
 
-  public Mono<Customer> save(Customer customer) {
-    return customerRepository.save(ClientMapper.clientEntity(customer))
-        .flatMap(client1 -> Mono.just(ClientMapper.customer(client1)));
+  public Mono<Client> save(Client client) {
+    return customerRepository.save(CustomerMapper.customer(client))
+        .flatMap(customer1 -> Mono.just(CustomerMapper.client(customer1)));
   }
 
-  public Mono<Customer> update(Customer customer) {
+  /*public Mono<Customer> update(Customer customer) {
     return customerRepository.save(ClientMapper.clientEntity(customer))
         .flatMap(client2 -> Mono.just(ClientMapper.customer(client2)));
   }
