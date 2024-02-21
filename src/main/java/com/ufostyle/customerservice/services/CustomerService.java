@@ -37,13 +37,7 @@ public class CustomerService {
         .flatMap(customer4 -> Mono.just(CustomerMapper.client(customer4)));
   }
 
-  /*
-  public Mono<Customer> findById(String id) {
-    return customerRepository.findById(id)
-        .flatMap(client4 -> Mono.just(ClientMapper.customer(client4)));
-  }
-
   public Mono<Void> deleteById(String id) {
     return customerRepository.deleteById(id);
-  }*/
+  }
 }

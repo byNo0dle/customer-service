@@ -45,18 +45,10 @@ public class ApiDelegateClient implements ClientApiDelegate {
         .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
   }
 
-  /*
-  @Override
-  public Mono<ResponseEntity<Customer>> findByIdClient(String id, ServerWebExchange exchange) {
-    return clientService.findById(id)
-        .flatMap(findAllCustomer -> Mono.just(ResponseEntity.ok(findAllCustomer)))
-        .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
-  }
-
   @Override
   public Mono<ResponseEntity<Void>> deleteClient(String id, ServerWebExchange exchange) {
-    return clientService.deleteById(id)
+    return customerService.deleteById(id)
         .then(Mono.just(ResponseEntity.noContent().<Void>build()))
         .switchIfEmpty(Mono.just(ResponseEntity.notFound().build()));
-  }*/
+  }
 }
