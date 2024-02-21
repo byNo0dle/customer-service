@@ -25,14 +25,14 @@ public class ApiDelegateClient implements ClientApiDelegate {
         .flatMap(createClient -> Mono.just(ResponseEntity.ok(createClient)));
   }
 
-  /*@Override
-  public Mono<ResponseEntity<Customer>> saveClient(
-      Mono<Customer> customer, ServerWebExchange exchange) {
-    return customer
-        .flatMap(requestCustomer1 -> clientService.save(requestCustomer1))
-        .flatMap(createCustomer -> Mono.just(ResponseEntity.ok(createCustomer)));
+  @Override
+  public Mono<ResponseEntity<Client>> updateClient(Mono<Client> client, ServerWebExchange exchange) {
+    return client
+        .flatMap(requestClient2 -> customerService.update(requestClient2))
+        .flatMap(updateClient -> Mono.just(ResponseEntity.ok(updateClient)));
   }
 
+  /*
   @Override
   public Mono<ResponseEntity<Customer>> updateClient(
       Mono<Customer> customer, ServerWebExchange exchange) {

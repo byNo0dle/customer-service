@@ -209,7 +209,7 @@ components:
           example: # 333
         province:
           type: string
-          example: Pucallpa
+          example: Coronel Portillo
         district:
           type: string
           example: Calleria
@@ -249,7 +249,7 @@ components:
           example: 1
         description:
           type: string
-          example: Personal
+          example: Dni
         isActive:
           type: boolean
           example:

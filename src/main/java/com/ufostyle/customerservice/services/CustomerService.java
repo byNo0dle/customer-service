@@ -21,6 +21,11 @@ public class CustomerService {
         .flatMap(customer1 -> Mono.just(CustomerMapper.client(customer1)));
   }
 
+  public Mono<Client> update(Client client) {
+    return customerRepository.save(CustomerMapper.customer(client))
+        .flatMap(customer2 -> Mono.just(CustomerMapper.client(customer2)));
+  }
+
   /*public Mono<Customer> update(Customer customer) {
     return customerRepository.save(ClientMapper.clientEntity(customer))
         .flatMap(client2 -> Mono.just(ClientMapper.customer(client2)));
