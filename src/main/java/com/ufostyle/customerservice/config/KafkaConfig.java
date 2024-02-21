@@ -8,13 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;*/
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Configuration
-public class KafkaStringConfig {
+public class KafkaConfig {
 
-  /*public ProducerFactory<String, String> producerFactory() {
+  /*@Bean
+  public ProducerFactory producerFactory() {
     Map<String, Object> config = new HashMap<>();
     config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
     config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -22,8 +20,8 @@ public class KafkaStringConfig {
     return new DefaultKafkaProducerFactory<>(config);
   }
 
-  @Bean(name = "kafkaStringTemplate")
-  public KafkaTemplate<String, String> kafkaTemplate() {
+  @Bean//(name = "kafkaStringTemplate")
+  public KafkaTemplate<String, CustomerKafkaMapper> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }*/
 }
