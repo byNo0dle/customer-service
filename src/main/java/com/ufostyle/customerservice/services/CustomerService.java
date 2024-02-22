@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * Esto es la interfaz CustomerService.
+ * Esto es la clase CustomerService.
  */
 @Service
 public class CustomerService {
@@ -45,8 +45,14 @@ public class CustomerService {
     return customerRepository.deleteById(id);
   }
 
+  /**
+   * Esto llama a la clase Client de openapi.
+   *
+   * @param numberDocumentIdentity esto es el parametro de trae de la clase Customer
+   * @return customer
+   */
   public Mono<Client> findByNumberDocumentIdentity(String numberDocumentIdentity) {
-    return  customerRepository.findByNumberDocumentIdentity(numberDocumentIdentity)
+    return customerRepository.findByNumberDocumentIdentity(numberDocumentIdentity)
         .switchIfEmpty(Mono.empty())
         .filter(numDocId -> numDocId.getStatus().equalsIgnoreCase("ACTIVO"));
   }

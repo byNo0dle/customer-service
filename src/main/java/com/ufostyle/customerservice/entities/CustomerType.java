@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * Esto es la clase TypeDocument.
+ * Esto es la clase CustomerType.
  */
 @Builder
 @Data

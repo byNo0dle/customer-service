@@ -1,13 +1,11 @@
 package com.ufostyle.customerservice.entities;
 
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDate;
-import java.util.UUID;
 
 /**
  * Esto es la clase Customer.

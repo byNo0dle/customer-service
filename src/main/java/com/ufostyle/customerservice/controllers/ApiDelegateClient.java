@@ -27,7 +27,8 @@ public class ApiDelegateClient implements ClientApiDelegate {
   }
 
   @Override
-  public Mono<ResponseEntity<Client>> updateClient(Mono<Client> client, ServerWebExchange exchange) {
+  public Mono<ResponseEntity<Client>> updateClient(
+      Mono<Client> client, ServerWebExchange exchange) {
     return client
         .flatMap(requestClient2 -> customerService.update(requestClient2))
         .flatMap(updateClient -> Mono.just(ResponseEntity.ok(updateClient)));
@@ -53,7 +54,8 @@ public class ApiDelegateClient implements ClientApiDelegate {
   }
 
   @Override
-  public Mono<ResponseEntity<Client>> findByNumberDocumentIdentityClient(String numberDocumentIdentity, ServerWebExchange exchange) {
+  public Mono<ResponseEntity<Client>> findByNumberDocumentIdentityClient(
+      String numberDocumentIdentity, ServerWebExchange exchange) {
     return customerService.findByNumberDocumentIdentity(numberDocumentIdentity)
         .flatMap(numDocId -> Mono.just(ResponseEntity.ok().body(numDocId)))
         .switchIfEmpty(Mono.just(ResponseEntity.badRequest().build()));

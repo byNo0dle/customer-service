@@ -3,6 +3,9 @@ package com.ufostyle.customerservice.entities;
 import lombok.Builder;
 import lombok.Data;
 
+/**
+ * Esto es la clase Address.
+ */
 @Builder
 @Data
 public class Address {
